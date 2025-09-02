@@ -13,7 +13,128 @@ const INITIAL_PARTS: Part[] = [
     name: 'Brake Pads',
     quantity: 25,
     price: 45.50
-  }
+  },
+  {
+  id: '3',
+  name: 'Air Filter',
+  quantity: 40,
+  price: 18.75
+},
+{
+  id: '4',
+  name: 'Spark Plug',
+  quantity: 60,
+  price: 9.99
+},
+{
+  id: '5',
+  name: 'Alternator Belt',
+  quantity: 15,
+  price: 27.30
+},
+{
+  id: '6',
+  name: 'Radiator Hose',
+  quantity: 20,
+  price: 22.80
+},
+{
+  id: '7',
+  name: 'Fuel Pump',
+  quantity: 10,
+  price: 135.00
+},
+{
+  id: '8',
+  name: 'Oil Pan Gasket',
+  quantity: 25,
+  price: 16.45
+},
+{
+  id: '9',
+  name: 'Headlight Bulb',
+  quantity: 100,
+  price: 7.50
+},
+{
+  id: '10',
+  name: 'Battery Terminal',
+  quantity: 30,
+  price: 5.99
+},
+{
+  id: '11',
+  name: 'Wheel Bearing',
+  quantity: 18,
+  price: 42.00
+},
+{
+  id: '12',
+  name: 'Wiper Blades',
+  quantity: 50,
+  price: 11.25
+},
+{
+  id: '13',
+  name: 'Thermostat',
+  quantity: 22,
+  price: 31.90
+},
+{
+  id: '14',
+  name: 'Timing Chain',
+  quantity: 8,
+  price: 145.60
+},
+{
+  id: '15',
+  name: 'Catalytic Converter',
+  quantity: 5,
+  price: 299.99
+},
+{
+  id: '16',
+  name: 'Exhaust Manifold',
+  quantity: 7,
+  price: 180.40
+},
+{
+  id: '17',
+  name: 'CV Joint',
+  quantity: 12,
+  price: 76.30
+},
+{
+  id: '18',
+  name: 'Shock Absorber',
+  quantity: 14,
+  price: 65.00
+},
+{
+  id: '19',
+  name: 'Brake Rotor',
+  quantity: 20,
+  price: 58.25
+},
+{
+  id: '20',
+  name: 'Engine Mount',
+  quantity: 13,
+  price: 49.95
+},
+{
+  id: '21',
+  name: 'Fuel Injector',
+  quantity: 9,
+  price: 99.99
+},
+{
+  id: '22',
+  name: 'Mass Air Flow Sensor',
+  quantity: 6,
+  price: 120.00
+}
+
 ];
 
 /**
@@ -99,7 +220,7 @@ export const loadPartsFromStorage = (): (Part[]) => {
       }
 
       // Return valid parts with additional validation
-      return data.parts.filter(part =>
+      return data.parts.filter((part: Part) =>
         part &&
         typeof part.id === 'string' &&
         typeof part.name === 'string' &&
@@ -122,36 +243,36 @@ export const loadPartsFromStorage = (): (Part[]) => {
 
 /* Simulates deleting parts from localStorage*/
 //DELETE Request
-export const deleteParts = (partId: string): Promise<void> => {
-  return new Promise((resolve, reject) => {
-    try {
-       // Get parts from localstorage
-      const storedData = localStorage.getItem('parts-inventory');
+// export const deleteParts = (partId: string): Promise<void> => {
+//   return new Promise((resolve, reject) => {
+//     try {
+//        // Get parts from localstorage
+//       const storedData = localStorage.getItem('parts-inventory');
 
-      // Validate that there are parts to delete in localStorage
-      if(!storedData) {
-        throw new Error("No parts in inventory!");
-      }
+//       // Validate that there are parts to delete in localStorage
+//       if(!storedData) {
+//         throw new Error("No parts in inventory!");
+//       }
 
-      //Retrieve parts from localstorage and format them into Part array
-      const parts: Part[] = JSON.parse(storedData);
+//       //Retrieve parts from localstorage and format them into Part array
+//       const parts: Part[] = JSON.parse(storedData);
       
-      //Filter array to remove the part with the ID 
-      const updatedParts = parts.filter((part) => part.id !== partId);
-      const serializedData = JSON.stringify(updatedParts)
+//       //Filter array to remove the part with the ID 
+//       const updatedParts = parts.filter((part) => part.id !== partId);
+//       const serializedData = JSON.stringify(updatedParts)
 
-      //Save updated array back to localstorage (remove from DB and persist changes)
-      localStorage.setItem('parts-inventory', serializedData);
+//       //Save updated array back to localstorage (remove from DB and persist changes)
+//       localStorage.setItem('parts-inventory', serializedData);
 
-      // Simulate API delay
-      setTimeout(() => {
-        resolve();
-      }, 300);
+//       // Simulate API delay
+//       setTimeout(() => {
+//         resolve();
+//       }, 300);
 
-    } catch (error) {
-      setTimeout(() => {
-        reject(error);
-      }, 300);
-    }
-  });
-};
+//     } catch (error) {
+//       setTimeout(() => {
+//         reject(error);
+//       }, 300);
+//     }
+//   });
+//};
