@@ -132,6 +132,8 @@ I think the best way to do pagination in this case would be horizontal based pag
 #### Dynamic Sorting
 My approach to dynamic sorting was quite simple. We need to sort based on name, price, and quantity, so these can be in ascending or descending order for all three categories. For this implementation, because the display of items is in PartList, the sorting work can be isolated to the PartList component. We are sending all of the current parts into PartList and so we can just sort that list of parts based on the category. For example, if we are sorting by price, we can take the sorting method, sort the parts array, and return a new array sorted based on price. I used useMemo for this because it's a calculation that only changes when the parts array or the sorting method changes. Once the array is sorted, we can now split it up into the sections that will be displayed on the frontend through the pagination calculations. Tracking the state of the type of sorting method we want in the UI definition allows us to update this with useMemo upon change. The functionality is very simple: it's a dropdown menu detailing the different ways you can sort based on price, quantity, name, and ascending or descending order.
 
+#### Dependencies
+I originally did a bit of the styling in Tailwind so it appears as a dependency, but decided against it for consistency and kept it all in the index.css styles. Also, I imported some React emojis using Lucide-react. 
 
 
 ### 4. Summary 
